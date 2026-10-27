@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container py-4">
+
+    <!-- PROFESSIONAL RECIPE SUB-MENU BAR (FIXED) -->
+    <div class="row justify-content-center mb-5">
+        <div class="col-md-10">
+            <div class="recipe-nav d-flex justify-content-center align-items-center shadow-sm p-2 rounded-pill bg-white border">
+                <a href="/recipes/pakistani" class="nav-btn {% if category == 'pakistani' %}active{% endif %}">PAKISTANI</a>
+                <a href="/recipes/chinese" class="nav-btn {% if category == 'chinese' %}active{% endif %}">CHINESE</a>
+                <a href="/recipes/korean" class="nav-btn {% if category == 'korean' %}active{% endif %}">KOREAN</a>
+                <a href="/recipes/traditional" class="nav-btn {% if category == 'traditional' %}active{% endif %}">TRADITIONAL</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- PAGE HEADER -->
+    <div class="text-center mb-5">
+        <h1 class="display-3 fw-bold text-uppercase" style="letter-spacing: 5px; font-family: 'Playfair Display', serif;">
+            {{ category }} <span class="text-warning">Cuisine</span>
+        </h1>
+        <div class="mx-auto" style="width: 100px; height: 4px; background: #d4af37; border-radius: 2px;"></div>
+    </div>
+
+    <!-- RECIPE GRID -->
+    <div class="row g-4">
+        {% for r in recipes %}
+        <div class="col-lg-4 col-md-6">
+            <div class="card h-100 border-0 shadow-lg overflow-hidden position-relative" style="border-radius: 20px; transition: 0.4s;">
+                
+                <!-- Chef Detail (YouTube Style) -->
+                <div class="position-absolute top-0 start-0 m-3 z-index-10 bg-dark-60 p-1 px-3 rounded-pill d-flex align-items-center" style="background: rgba(0,0,0,0.6); z-index: 5;">
+                    <img src="{{ r.author.profile_pic }}" class="rounded-circle border border-warning" width="25" height="25" style="object-fit: cover;">
+                    <small class="ms-2 text-white fw-bold">{{ r.author.username }}</small>
+                </div>
+
+                <img src="{{ r.img }}" class="card-img-top" style="height: 280px; object-fit: cover;" 
+                     onerror="this.src='https://images.unsplash.com/photo-1495195129352-aec325b55b65?w=800'">
+                
+                <div class="card-body p-4 text-center">
+                    <span class="badge bg-light text-dark border mb-2 px-3 py-2">
+                        <i class="fas fa-city text-warning me-1"></i> {{ r.city }}
+                    </span>
+                    <h3 class="fw-bold mb-3" style="font-size: 1.4rem;">{{ r.name }}</h3>
+                    <a href="/recipe_detail/{{ r.category }}/{{ r.id }}" class="btn btn-warning w-100 rounded-pill fw-bold py-2 shadow-sm">VIEW FULL RECIPE</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<!-- Styling for the Fixed Navbar -->
+<style>
+    .recipe-nav { gap: 10px; }
+    .nav-btn {
+        text-decoration: none;
+        color: #333;
+        font-weight: 600;
+        padding: 10px 25px;
+        border-radius: 50px;
+        transition: 0.3s;
+        font-size: 14px;
+        letter-spacing: 1px;
+    }
+    .nav-btn:hover { background: #f8f9fa; color: #d4af37; }
+    .nav-btn.active { background: #d4af37; color: #000; box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3); }
+    
+    .card:hover { transform: translateY(-10px); }
+    .bg-dark-60 { backdrop-filter: blur(5px); }
+</style>
+{% endblock %}

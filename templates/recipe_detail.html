@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container py-5">
+    <a href="javascript:history.back()" class="btn btn-dark rounded-pill px-4 mb-4 shadow"><i class="fas fa-arrow-left"></i> BACK</a>
+
+    <div class="row g-5">
+        <div class="col-md-5">
+            <img src="{{ recipe.img }}" class="img-fluid rounded-5 shadow-lg border-5 border-white" style="width: 100%; height: 450px; object-fit: cover;">
+            
+            <!-- CHEF PROFILE SECTION (YOUTUBE STYLE) -->
+            <div class="mt-4 p-4 bg-white border rounded-4 shadow-sm d-flex align-items-center">
+                <img src="{{ recipe.author.profile_pic }}" class="rounded-circle border border-warning" width="60" height="60" style="object-fit: cover;">
+                <div class="ms-3">
+                    <h6 class="mb-0 fw-bold">Chef {{ recipe.author.username }}</h6>
+                    <p class="small text-muted mb-0">{{ recipe.author.bio }}</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-7">
+            <h1 class="display-3 fw-bold">{{ recipe.name }}</h1>
+            <p class="badge bg-warning text-dark fs-5">{{ recipe.city }} Special</p>
+            <hr>
+            
+            <h4 class="fw-bold mb-3">Ingredients:</h4>
+            <div class="row bg-light p-3 rounded-4 mb-4">
+                {% for i in ing_list %}<div class="col-md-6 py-1"><i class="fas fa-check text-success"></i> {{ i }}</div>{% endfor %}
+            </div>
+
+            <div class="btn-group w-100 mb-3 shadow">
+                <button class="btn btn-dark active" onclick="toggle('en')">English Guide</button>
+                <button class="btn btn-warning" onclick="toggle('ur')">Roman Urdu</button>
+            </div>
+
+            <div class="p-4 border rounded-4 bg-white shadow-sm">
+                <div id="en_s">{% for s in eng_list %}<p class="fs-5 mb-2"><span class="badge bg-dark me-2">{{ loop.index }}</span> {{ s }}</p>{% endfor %}</div>
+                <div id="ur_s" style="display:none;">{% for s in urdu_list %}<p class="fs-5 mb-2 text-end">{{ s }} <span class="badge bg-warning text-dark ms-2">{{ loop.index }}</span></p>{% endfor %}</div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+function toggle(l){
+    document.getElementById('en_s').style.display = (l=='en'?'block':'none');
+    document.getElementById('ur_s').style.display = (l=='ur'?'block':'none');
+}
+</script>
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6 card p-5 shadow-lg border-0" style="border-radius: 25px;">
+            <h2 class="text-center fw-bold mb-4">Account Settings</h2>
+            <form method="POST" enctype="multipart/form-data">
+                <div class="text-center mb-4">
+                    <label for="f" style="cursor: pointer;">
+                        <img src="{{ user.profile_pic }}" id="pv" class="rounded-circle border border-4 border-warning shadow" width="150" height="150" style="object-fit: cover;">
+                        <p class="text-muted mt-2 small">Change Photo</p>
+                    </label>
+                    <input type="file" name="profile_file" id="f" style="display:none;" onchange="document.getElementById('pv').src = window.URL.createObjectURL(this.files[0])">
+                </div>
+                <div class="mb-3"><label class="fw-bold">Bio</label><textarea name="bio" class="form-control" rows="3">{{ user.bio }}</textarea></div>
+                <button type="submit" class="btn btn-warning w-100 fw-bold rounded-pill py-2 shadow">SAVE CHANGES</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

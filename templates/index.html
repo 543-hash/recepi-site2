@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+{% block content %}
+
+<!-- HERO SECTION WITH BEAUTIFUL BACKGROUND IMAGE -->
+<div class="hero-header text-center d-flex align-items-center justify-content-center" 
+     style="background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=1600'); 
+            height: 70vh; background-size: cover; background-position: center; border-radius: 20px; margin-top: 10px;">
+    <div class="container text-white">
+        <h1 class="display-2 fw-bold mb-3" style="font-family: 'Playfair Display', serif; letter-spacing: 2px;">Experience Culinary Perfection</h1>
+        <p class="fs-4 fw-light mb-5 px-md-5">A curated collection of authentic recipes from around the globe, designed for those who love to cook and live to eat.</p>
+        <a href="/recipes" class="btn btn-warning btn-lg px-5 py-3 fw-bold shadow-lg rounded-pill" style="letter-spacing: 1px;">
+            <i class="fas fa-utensils me-2"></i> EXPLORE OUR MENU
+        </a>
+    </div>
+</div>
+
+<!-- WHY HEAVEN SECTION IN PROFESSIONAL ENGLISH -->
+<div class="container my-5 py-5">
+    <div class="text-center mb-5">
+        <h2 class="display-5 fw-bold" style="font-family: 'Playfair Display', serif;">Why HEAVEN?</h2>
+        <div class="mx-auto" style="width: 80px; height: 4px; background: #d4af37; border-radius: 2px;"></div>
+    </div>
+
+    <div class="row g-4 text-center">
+        <!-- Feature 1 -->
+        <div class="col-md-4">
+            <div class="p-4 h-100">
+                <div class="mb-4">
+                    <i class="fas fa-gem fs-1 text-warning"></i>
+                </div>
+                <h4 class="fw-bold mb-3">Premium Ingredients</h4>
+                <p class="text-secondary lh-lg">We believe great meals start with great products. Our recipes are curated to highlight the freshest, highest-quality ingredients available.</p>
+            </div>
+        </div>
+
+        <!-- Feature 2 -->
+        <div class="col-md-4">
+            <div class="p-4 h-100">
+                <div class="mb-4">
+                    <i class="fas fa-globe fs-1 text-warning"></i>
+                </div>
+                <h4 class="fw-bold mb-3">Global Flavors</h4>
+                <p class="text-secondary lh-lg">From the aromatic spices of Karachi's Biryani to the delicate balance of Korean Bulgogi, we bring the world's most iconic flavors to your kitchen.</p>
+            </div>
+        </div>
+
+        <!-- Feature 3 -->
+        <div class="col-md-4">
+            <div class="p-4 h-100">
+                <div class="mb-4">
+                    <i class="fas fa-medal fs-1 text-warning"></i>
+                </div>
+                <h4 class="fw-bold mb-3">City Originals</h4>
+                <p class="text-secondary lh-lg">Every dish in our collection is tied to its city of origin, preserving the authentic culinary heritage and traditional cooking methods.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- NEWSLETTER / FOOTER BANNER -->
+<div class="container mb-5">
+    <div class="bg-dark text-white p-5 rounded-5 text-center shadow-lg border-start border-warning border-5">
+        <h3 class="fw-bold mb-3">Join Our Culinary Community</h3>
+        <p class="text-muted mb-4">Subscribe to receive new recipes, tips, and professional cooking secrets every week.</p>
+        <div class="d-flex justify-content-center">
+            <a href="/signup" class="btn btn-outline-warning rounded-pill px-4">CREATE FREE ACCOUNT</a>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
